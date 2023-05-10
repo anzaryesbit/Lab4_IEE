@@ -19,6 +19,10 @@ func _physics_process(delta):
 			animated_sprite.animation = "idle"
 			animated_sprite.play()
 		else:
+			if velocity.x > 0:
+				animated_sprite.flip_h = false
+			elif velocity.x < 0:
+				animated_sprite.flip_h = true
 			animated_sprite.animation = "run"
 			animated_sprite.play()
 
