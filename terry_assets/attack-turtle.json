@@ -1,5 +1,5 @@
 { "frames": {
-   "falling-turtle.aseprite": {
+   "attack-turtle.aseprite": {
     "frame": { "x": 0, "y": 0, "w": 48, "h": 48 },
     "rotated": false,
     "trimmed": false,
@@ -11,7 +11,7 @@
  "meta": {
   "app": "https://www.aseprite.org/",
   "version": "1.2.40-x64",
-  "image": "jumping-turtle.png",
+  "image": "attack-turtle.png",
   "format": "RGBA8888",
   "size": { "w": 48, "h": 48 },
   "scale": "1",

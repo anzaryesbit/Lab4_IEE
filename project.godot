@@ -24,7 +24,7 @@ window/stretch/scale=6.0
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/aseprite_importer/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 
