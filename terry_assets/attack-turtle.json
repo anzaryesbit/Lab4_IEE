@@ -1,6 +1,22 @@
 { "frames": {
-   "attack-turtle.aseprite": {
+   "attack-turtle 0.aseprite": {
     "frame": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "attack-turtle 1.aseprite": {
+    "frame": { "x": 48, "y": 0, "w": 48, "h": 48 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
+    "sourceSize": { "w": 48, "h": 48 },
+    "duration": 100
+   },
+   "attack-turtle 2.aseprite": {
+    "frame": { "x": 96, "y": 0, "w": 48, "h": 48 },
     "rotated": false,
     "trimmed": false,
     "spriteSourceSize": { "x": 0, "y": 0, "w": 48, "h": 48 },
@@ -13,7 +29,7 @@
   "version": "1.2.40-x64",
   "image": "attack-turtle.png",
   "format": "RGBA8888",
-  "size": { "w": 48, "h": 48 },
+  "size": { "w": 144, "h": 48 },
   "scale": "1",
   "frameTags": [
   ],
