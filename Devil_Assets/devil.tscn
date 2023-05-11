@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=3 uid="uid://ix0xncle3hce"]
+
+[ext_resource type="Texture2D" uid="uid://dw7r3pu8yofg4" path="res://Devil_Assets/Devil Sheet.png" id="1_lrh2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l6nt"]
+size = Vector2(13, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3avt"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrksa"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmarh"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1vic"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhhle"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r4ky"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(96, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kphor"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m8xj"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(48, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydmr"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(96, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2bf8"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(0, 96, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b152t"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(48, 96, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rg8u"]
+atlas = ExtResource("1_lrh2m")
+region = Rect2(96, 96, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dasjl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3avt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrksa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmarh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1vic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhhle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r4ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kphor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m8xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ydmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2bf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b152t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rg8u")
+}],
+"loop": true,
+"name": &"offer deal",
+"speed": 10.0
+}]
+
+[node name="Devil" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-0.5, -4)
+shape = SubResource("RectangleShape2D_2l6nt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_dasjl")
+animation = &"offer deal"
+autoplay = "offer deal"
+frame = 1
