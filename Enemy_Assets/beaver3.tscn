@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://l4fg0iq212sk"]
+[gd_scene load_steps=11 format=3 uid="uid://l4fg0iq212sk"]
 
 [ext_resource type="Script" path="res://Enemy_Assets/beaver3.gd" id="1_fb4j3"]
 [ext_resource type="Texture2D" uid="uid://bikijw47n4prp" path="res://Enemy_Assets/beaver3_2.png" id="2_6vqo5"]
+[ext_resource type="Script" path="res://Enemy_Assets/Damageable.gd" id="3_nktov"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sht8g"]
 atlas = ExtResource("2_6vqo5")
@@ -68,3 +69,6 @@ autoplay = "walking"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_yu85v")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("3_nktov")

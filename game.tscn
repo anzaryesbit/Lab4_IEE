@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dvt6xmexswlv3"]
+[gd_scene load_steps=64 format=3 uid="uid://dvt6xmexswlv3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_s5wt6"]
 [ext_resource type="Texture2D" uid="uid://obaeoh3dyjqk" path="res://terry_assets/idle.png" id="1_uao8v"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://health_amount.gd" id="12_d3jxc"]
 [ext_resource type="PackedScene" uid="uid://ix0xncle3hce" path="res://Devil_Assets/devil.tscn" id="16_r2uru"]
 [ext_resource type="Script" path="res://Attack.gd" id="14_nrl67"]
+[ext_resource type="Script" path="res://Sword.gd" id="15_o0311"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xhuoi"]
 texture = ExtResource("4_1epqi")
@@ -1027,6 +1028,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sword:monitoring")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_6mmy8"]
 resource_name = "jump"
@@ -1292,6 +1305,9 @@ transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mlejy"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d4cuj"]
+size = Vector2(15.5, 26.75)
+
 [node name="Node" type="Node"]
 
 [node name="Background" type="TileMap" parent="."]
@@ -1369,8 +1385,8 @@ wait_time = 0.8
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Terry"]
-texture = ExtResource("3_kd1ax")
-hframes = 9
+texture = ExtResource("4_ru1vl")
+hframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Terry"]
 libraries = {
@@ -1382,6 +1398,13 @@ tree_root = SubResource("AnimationNodeStateMachine_ul6uo")
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mlejy")
 parameters/Move/blend_position = 0
+
+[node name="Sword" type="Area2D" parent="Terry"]
+script = ExtResource("15_o0311")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Terry/Sword"]
+position = Vector2(18.25, 2.625)
+shape = SubResource("RectangleShape2D_d4cuj")
 
 [node name="Beaver" parent="." instance=ExtResource("9_deu22")]
 position = Vector2(262, 4)
@@ -1396,3 +1419,4 @@ position = Vector2(55, 8)
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Landing" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Attack" method="_on_animation_player_animation_finished"]
 [connection signal="animation_started" from="Terry/AnimationTree" to="Terry/CharacterStateMachine/Attack" method="_on_animation_tree_animation_started"]
+[connection signal="body_entered" from="Terry/Sword" to="Terry/Sword" method="_on_body_entered"]
