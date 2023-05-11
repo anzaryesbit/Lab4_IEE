@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjqqa2s4fbx58"]
+[gd_scene load_steps=15 format=3 uid="uid://cjqqa2s4fbx58"]
 
 [ext_resource type="Script" path="res://Enemy_Assets/beaver2.gd" id="1_56rpt"]
 [ext_resource type="Texture2D" uid="uid://b3su4tumbince" path="res://Enemy_Assets/beaver2.png" id="1_a715x"]
 [ext_resource type="Texture2D" uid="uid://bkmf38t5dt3xf" path="res://Enemy_Assets/beaver2_nooutline.png" id="3_e4e0j"]
+[ext_resource type="Script" path="res://Enemy_Assets/Damageable.gd" id="4_ena40"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3dfsi"]
 atlas = ExtResource("1_a715x")
@@ -88,3 +89,6 @@ frame_progress = 0.861663
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_yu85v")
+
+[node name="Damageable" type="Node" parent="."]
+script = ExtResource("4_ena40")
