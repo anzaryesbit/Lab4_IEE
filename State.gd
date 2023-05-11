@@ -4,6 +4,8 @@ class_name State
 
 var states : Array[State]
 
+@export var return_state : State
+@export var return_animation_node : String = "Move"
 @export var can_move : bool = true
 var character : CharacterBody2D
 var playback : AnimationNodeStateMachinePlayback
@@ -20,3 +22,5 @@ func on_exit():
 
 func state_process(delta):
 	pass
+
+
