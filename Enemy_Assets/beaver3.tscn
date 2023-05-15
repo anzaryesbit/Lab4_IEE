@@ -1,8 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://l4fg0iq212sk"]
+[gd_scene load_steps=14 format=3 uid="uid://l4fg0iq212sk"]
 
 [ext_resource type="Script" path="res://Enemy_Assets/beaver3.gd" id="1_fb4j3"]
 [ext_resource type="Texture2D" uid="uid://bikijw47n4prp" path="res://Enemy_Assets/beaver3_2.png" id="2_6vqo5"]
+[ext_resource type="Texture2D" uid="uid://fl0hfjtxcsd6" path="res://Enemy_Assets/beaver3_whurt.png" id="2_q2wkh"]
 [ext_resource type="Script" path="res://Enemy_Assets/Damageable.gd" id="3_nktov"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwvib"]
+atlas = ExtResource("2_q2wkh")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3kp1"]
+atlas = ExtResource("2_q2wkh")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sht8g"]
 atlas = ExtResource("2_6vqo5")
@@ -26,6 +35,17 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tyxsx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwvib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3kp1")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 2.0,
 "texture": SubResource("AtlasTexture_sht8g")
@@ -63,10 +83,12 @@ script = ExtResource("1_fb4j3")
 
 [node name="AnimatedBeaver" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tyxsx")
-animation = &"walking"
+animation = &"damaged"
 autoplay = "walking"
+frame_progress = 0.843997
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_yu85v")
 
