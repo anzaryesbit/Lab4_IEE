@@ -1244,20 +1244,20 @@ position = Vector2(69, -143)
 script = ExtResource("1_s5wt6")
 
 [node name="health" type="RichTextLabel" parent="Terry" node_paths=PackedStringArray("character")]
-offset_left = -147.0
-offset_top = -83.0
-offset_right = -114.0
-offset_bottom = -60.0
+offset_left = -234.0
+offset_top = -129.0
+offset_right = -201.0
+offset_bottom = -106.0
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_om2ux")
 character = NodePath("..")
 
 [node name="health_amount" type="RichTextLabel" parent="Terry" node_paths=PackedStringArray("character")]
-offset_left = -113.0
-offset_top = -83.0
-offset_right = -51.0
-offset_bottom = -57.0
+offset_left = -200.0
+offset_top = -129.0
+offset_right = -138.0
+offset_bottom = -103.0
 script = ExtResource("12_d3jxc")
 character = NodePath("..")
 
@@ -1329,12 +1329,6 @@ script = ExtResource("15_o0311")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terry/Sword"]
 position = Vector2(20.25, 2.625)
 shape = SubResource("RectangleShape2D_d4cuj")
-
-[node name="Beaver" parent="." instance=ExtResource("9_deu22")]
-position = Vector2(262, 4)
-
-[node name="Beaver3" parent="." instance=ExtResource("10_bbwcy")]
-position = Vector2(69, -143)
 
 [node name="Devil" parent="." instance=ExtResource("18_ggmge")]
 position = Vector2(47, 8)

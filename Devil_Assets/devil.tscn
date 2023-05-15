@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ix0xncle3hce"]
+[gd_scene load_steps=19 format=3 uid="uid://ix0xncle3hce"]
 
+[ext_resource type="Script" path="res://Devil_Assets/devil.gd" id="1_3rwv3"]
 [ext_resource type="Texture2D" uid="uid://dw7r3pu8yofg4" path="res://Devil_Assets/Devil Sheet.png" id="1_lrh2m"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l6nt"]
-size = Vector2(13, 24)
+[ext_resource type="PackedScene" uid="uid://26j33k26moxc" path="res://test_dialogue.tscn" id="3_ipyea"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3avt"]
 atlas = ExtResource("1_lrh2m")
@@ -97,12 +96,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Devil" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l6nt"]
+size = Vector2(22.5, 25)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-z_index = 1
-position = Vector2(-0.5, -4)
-shape = SubResource("RectangleShape2D_2l6nt")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30qn1"]
+size = Vector2(63, 27.5)
+
+[node name="Devil" type="CharacterBody2D"]
+script = ExtResource("1_3rwv3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -2)
@@ -110,3 +111,28 @@ sprite_frames = SubResource("SpriteFrames_dasjl")
 animation = &"offer deal"
 autoplay = "offer deal"
 frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-0.25, -3.5)
+shape = SubResource("RectangleShape2D_2l6nt")
+
+[node name="InteractableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+position = Vector2(-0.5, -3.75)
+shape = SubResource("RectangleShape2D_30qn1")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -11.0
+offset_top = -24.0
+offset_right = 74.0
+offset_bottom = 2.0
+scale = Vector2(0.25, 0.25)
+text = "interact (e)"
+
+[node name="Dialogue" parent="." instance=ExtResource("3_ipyea")]
+
+[connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="InteractableArea" to="." method="_on_interactable_area_body_exited"]
