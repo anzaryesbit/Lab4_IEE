@@ -1,9 +1,27 @@
-[gd_scene load_steps=15 format=3 uid="uid://cjqqa2s4fbx58"]
+[gd_scene load_steps=21 format=3 uid="uid://cjqqa2s4fbx58"]
 
 [ext_resource type="Script" path="res://Enemy_Assets/beaver2.gd" id="1_56rpt"]
 [ext_resource type="Texture2D" uid="uid://b3su4tumbince" path="res://Enemy_Assets/beaver2.png" id="1_a715x"]
+[ext_resource type="Texture2D" uid="uid://bsgfps1nbfj5o" path="res://Enemy_Assets/beaver2_whurt.png" id="2_rqiim"]
+[ext_resource type="Texture2D" uid="uid://dohxls0vkoq74" path="res://Enemy_Assets/beaver2_nooutline_whurt.png" id="3_2tys1"]
 [ext_resource type="Texture2D" uid="uid://bkmf38t5dt3xf" path="res://Enemy_Assets/beaver2_nooutline.png" id="3_e4e0j"]
 [ext_resource type="Script" path="res://Enemy_Assets/Damageable.gd" id="4_ena40"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgge6"]
+atlas = ExtResource("2_rqiim")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aq11w"]
+atlas = ExtResource("2_rqiim")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pw2jk"]
+atlas = ExtResource("3_2tys1")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kc05h"]
+atlas = ExtResource("3_2tys1")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3dfsi"]
 atlas = ExtResource("1_a715x")
@@ -39,6 +57,28 @@ region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tyxsx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgge6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aq11w")
+}],
+"loop": true,
+"name": &"damaged",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pw2jk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kc05h")
+}],
+"loop": true,
+"name": &"damaged_no_outline",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3dfsi")
@@ -82,11 +122,12 @@ script = ExtResource("1_56rpt")
 
 [node name="AnimationBeaver" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tyxsx")
-animation = &"idle"
+animation = &"damaged"
 autoplay = "idle"
-frame_progress = 0.861663
+frame_progress = 0.236768
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_yu85v")
 
