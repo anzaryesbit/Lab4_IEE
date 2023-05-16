@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dvt6xmexswlv3"]
+[gd_scene load_steps=66 format=3 uid="uid://dvt6xmexswlv3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_s5wt6"]
 [ext_resource type="Texture2D" uid="uid://obaeoh3dyjqk" path="res://terry_assets/idle.png" id="1_uao8v"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://djtrlro5m60ex" path="res://terry_assets/attack-turtle.png" id="4_ru1vl"]
 [ext_resource type="PackedScene" uid="uid://cjqqa2s4fbx58" path="res://Enemy_Assets/beaver2.tscn" id="9_deu22"]
 [ext_resource type="Script" path="res://CharacterStateMachine.gd" id="9_fmuif"]
-[ext_resource type="PackedScene" uid="uid://l4fg0iq212sk" path="res://Enemy_Assets/beaver3.tscn" id="10_bbwcy"]
 [ext_resource type="Script" path="res://GroundState.gd" id="10_qtpsb"]
 [ext_resource type="Script" path="res://health.gd" id="11_om2ux"]
 [ext_resource type="Script" path="res://AirState.gd" id="11_p7q5y"]
@@ -17,7 +16,9 @@
 [ext_resource type="Script" path="res://health_amount.gd" id="12_d3jxc"]
 [ext_resource type="Script" path="res://Attack.gd" id="14_nrl67"]
 [ext_resource type="Script" path="res://Sword.gd" id="15_o0311"]
+[ext_resource type="Script" path="res://FacingCollisionShapeSword.gd" id="17_ekh4d"]
 [ext_resource type="PackedScene" uid="uid://ix0xncle3hce" path="res://Devil_Assets/devil.tscn" id="18_ggmge"]
+[ext_resource type="PackedScene" uid="uid://deaqa4u0cl7gn" path="res://Devil_Assets/jump_devil.tscn" id="19_xtxkk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xhuoi"]
 texture = ExtResource("4_1epqi")
@@ -948,7 +949,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_c83wg"]
 resource_name = "attack"
-length = 0.3
+length = 0.11
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -981,7 +982,7 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"times": PackedFloat32Array(0, 0.02, 0.04, 0.06, 0.08, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -993,7 +994,7 @@ tracks/3/path = NodePath("Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3),
+"times": PackedFloat32Array(0, 0.04, 0.11),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -1234,11 +1235,8 @@ layer_0/tile_data = PackedInt32Array(-131098, 0, 7, -65562, 0, 8, -26, 0, 9, 655
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Beaver" parent="." instance=ExtResource("9_deu22")]
+[node name="Beaver1" parent="." instance=ExtResource("9_deu22")]
 position = Vector2(262, 4)
-
-[node name="Beaver3" parent="." instance=ExtResource("10_bbwcy")]
-position = Vector2(69, -143)
 
 [node name="Terry" type="CharacterBody2D" parent="."]
 script = ExtResource("1_s5wt6")
@@ -1322,19 +1320,29 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mlejy")
 parameters/Move/blend_position = 0
 
-[node name="Sword" type="Area2D" parent="Terry"]
-monitoring = false
+[node name="Sword" type="Area2D" parent="Terry" node_paths=PackedStringArray("player", "facing_collision_shape")]
 script = ExtResource("15_o0311")
+player = NodePath("..")
+facing_collision_shape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terry/Sword"]
 position = Vector2(20.25, 2.625)
 shape = SubResource("RectangleShape2D_d4cuj")
+script = ExtResource("17_ekh4d")
+facing_left_position = Vector2(-20.25, 2.625)
+facing_right_position = Vector2(20.25, 2.625)
 
-[node name="Devil" parent="." instance=ExtResource("18_ggmge")]
-position = Vector2(47, 8)
+[node name="Attack_Devil" parent="." instance=ExtResource("18_ggmge")]
+position = Vector2(-286, 8)
+
+[node name="Jump_Devil" parent="." instance=ExtResource("19_xtxkk")]
+position = Vector2(382, 7)
+
+[node name="Beaver" parent="." instance=ExtResource("9_deu22")]
+position = Vector2(-134, -90)
 
 [connection signal="body_entered" from="Terry/player_hitbox" to="Terry" method="_on_player_hitbox_body_entered"]
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Landing" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Attack" method="_on_animation_player_animation_finished"]
-[connection signal="animation_started" from="Terry/AnimationTree" to="Terry/CharacterStateMachine/Attack" method="_on_animation_tree_animation_started"]
 [connection signal="body_entered" from="Terry/Sword" to="Terry/Sword" method="_on_body_entered"]
+[connection signal="property_list_changed" from="Attack_Devil" to="Terry/CharacterStateMachine/Ground" method="_on_attack_devil_property_list_changed"]

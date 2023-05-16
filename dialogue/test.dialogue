@@ -1,0 +1,31 @@
+~ start
+
+if Global.attack_devil_talk == false:
+	set Global.attack_devil_talk = true
+	Terry: Who are you?
+	???: Depends on who's asking.
+	Terry: I'm Terry the Turtle.
+	Devil: Ah yes. I've heard of you and the situation you're in. I'm a devil and I can offer you a way to protect yourself.
+	Terry: This deal isn't free. Is it?
+	Devil: No it's not it'll cost you 1 heart of your maximum health, but I promise you it's worth it.
+	- Yes
+		set Global.attack_devil_deal == true
+		Devil: I have given you a sword to defend yourself. Good luck!
+		=> END
+	- No
+		Devil: Come back to me when you're ready.
+		=> END
+else:
+	if Global.attack_devil_deal == false:
+		Devil: We have already made a deal. Go on your way.
+		=> END
+	else:
+		Devil: I see you're back. Are you ready to make the deal?
+		- Yes
+		set Global.attack_devil_deal == true
+		Devil: I have given you a sword to defend yourself. Good luck!
+		=> END
+	- No
+		Devil: Come back to me when you're ready.
+		=> END
+=> END

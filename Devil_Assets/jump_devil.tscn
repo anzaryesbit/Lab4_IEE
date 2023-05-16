@@ -1,0 +1,140 @@
+[gd_scene load_steps=20 format=3 uid="uid://deaqa4u0cl7gn"]
+
+[ext_resource type="Script" path="res://Devil_Assets/jump_devil.gd" id="1_nrflh"]
+[ext_resource type="Texture2D" uid="uid://dw7r3pu8yofg4" path="res://Devil_Assets/Devil Sheet.png" id="2_yd3i1"]
+[ext_resource type="PackedScene" uid="uid://3324i8fl32sp" path="res://dialogue/jump_dialogue.tscn" id="3_3022t"]
+[ext_resource type="Script" path="res://test_dialogue.gd" id="4_ml2ke"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3avt"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrksa"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmarh"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1vic"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhhle"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3r4ky"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(96, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kphor"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(0, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m8xj"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(48, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ydmr"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(96, 64, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2bf8"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(0, 96, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b152t"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(48, 96, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rg8u"]
+atlas = ExtResource("2_yd3i1")
+region = Rect2(96, 96, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dasjl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3avt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrksa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmarh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1vic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhhle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3r4ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kphor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m8xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ydmr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2bf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b152t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rg8u")
+}],
+"loop": true,
+"name": &"offer deal",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2l6nt"]
+size = Vector2(22.5, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30qn1"]
+size = Vector2(63, 27.5)
+
+[node name="Devil" type="CharacterBody2D"]
+script = ExtResource("1_nrflh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_dasjl")
+animation = &"offer deal"
+autoplay = "offer deal"
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(-0.25, -3.5)
+shape = SubResource("RectangleShape2D_2l6nt")
+
+[node name="InteractableArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
+position = Vector2(-0.5, -3.75)
+shape = SubResource("RectangleShape2D_30qn1")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -11.0
+offset_top = -24.0
+offset_right = 74.0
+offset_bottom = 2.0
+scale = Vector2(0.25, 0.25)
+text = "interact (e)"
+
+[node name="Dialogue" parent="." instance=ExtResource("3_3022t")]
+script = ExtResource("4_ml2ke")
+
+[connection signal="body_entered" from="InteractableArea" to="." method="_on_interactable_area_body_entered"]
+[connection signal="body_exited" from="InteractableArea" to="." method="_on_interactable_area_body_exited"]

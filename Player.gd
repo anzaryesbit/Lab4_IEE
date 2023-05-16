@@ -1,7 +1,8 @@
 extends CharacterBody2D
-class_name player
+class_name Player
 
 signal life_changed(player_hearts)
+signal facing_direction_changed(facing_right : bool)
 
 var max_hearts = 10
 var hearts = 10
@@ -23,8 +24,7 @@ func _ready():
 	animation_tree.active = true
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("attack"):
-		attack()
+	pass
 	
 func _physics_process(delta):
 	# Add the gravity.
@@ -62,6 +62,7 @@ func update_facing_direction():
 		sprite.flip_h = false
 	elif direction.x < 0:
 		sprite.flip_h = true
+	emit_signal("facing_direction_changed", !sprite.flip_h)
 
 func land():
 	#animated_sprite.play("fall")

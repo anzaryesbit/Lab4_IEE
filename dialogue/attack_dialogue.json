@@ -1,0 +1,13 @@
+[
+	{"name": "garbage", "text": "garbage"},
+	{"name": "Terry", "text" : "Who are you?"},
+	{"name": "???", "text" : "Depends on who's asking."},
+	{"name": "Terry", "text": "I'm Terry the Turtle"},
+	{"name": "Devil", "text": "Ah yes. I've heard of you and the situation you're in. I'm a devil and I can offer you a way to protect yourself."},
+	{"name": "Terry", "text": "This deal isn't free. Is it?"},
+	{"name": "Devil", "text": "No it's not it'll cost you 1 heart of your maximum health, but I promise you it's worth it."},
+	{"name": "Terry", "text": "Can I think about it first?"},
+	{"name": "Devil", "text": "Nope, once you've started talking to me, you've locked yourself in your deal"},
+	{"name": "Devil", "text": "I have given you a sword to defend yourself. Good luck!"},
+	{"name": "Devil", "text": "We've made a deal already. Go on your way."}
+]

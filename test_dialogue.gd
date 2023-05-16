@@ -1,8 +1,11 @@
 extends CanvasLayer
 
 var dialogue = []
-var data_path = "res://dialogue/test.json"
+@export var data_path : String = "res://dialogue/test.json"
+@export var deal : int = 8
+@export var returning : int = 11
 var current_dialogue_id = 0
+@export var talked_to = false
 var d_active = false
 
 # Called when the node enters the scene tree for the first time.
@@ -37,12 +40,17 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		next_script()
 
-func next_script():
+func next_script(event = null):
 	current_dialogue_id += 1
-	if current_dialogue_id >= len(dialogue):
+	if current_dialogue_id == len(dialogue) - 1:
 		$Timer.start()
 		$NinePatchRect.visible = false
-		current_dialogue_id = 0
+		talked_to = true
+		return
+	if current_dialogue_id >= len(dialogue):
+		$Timer. start()
+		$NinePatchRect.visible = false
+		current_dialogue_id = len(dialogue) - 1
 		return
 	
 	$NinePatchRect/Name.text = dialogue[current_dialogue_id]['name']

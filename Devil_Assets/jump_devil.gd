@@ -7,7 +7,6 @@ var dialogue = null
 
 func _ready():
 	dialogue = get_node("Dialogue")
-	$AnimatedSprite2D.flip_h = true
 	
 func _process(delta):
 	if dialogue.talked_to == true:
@@ -31,11 +30,8 @@ func _input(event):
 		$Label.visible = false
 		use_dialogue()
 
-func initial_use_dialogue():
-	DialogueManager.show_example_dialogue_balloon(load("res://dialogue/test.dialogue"), "start")
-
 func use_dialogue():
-	dialogue.data_path = "res://dialogue/attack_dialogue.json"
+	dialogue.data_path = "res://dialogue/jump_dialogue.json"
 	if dialogue:
 		dialogue.start()
 

@@ -8,12 +8,19 @@ class_name GroundState
 @export var attack_state : State
 @export var attack_animation : String = "attack"
 
+var can_jump = false
+var can_attack = false
+
+
 # velocity.y = jump_velocity
 func state_input(event : InputEvent):
+	var global = load("res://global.gd")
 	if (event.is_action_pressed("jump")):
-		jump()
+		if get_parent().get_parent().get_parent().get_node("Jump_Devil").accepted_deal == true:
+			jump()
 	if (event.is_action_pressed("attack")):
-		attack()
+		if get_parent().get_parent().get_parent().get_node("Attack_Devil").accepted_deal == true:
+			attack()
 
 func jump():
 	character.velocity.y = JUMP_VELOCITY
@@ -23,3 +30,7 @@ func jump():
 func attack():
 	next_state = attack_state
 	playback.travel(attack_animation)
+
+
+func _on_attack_devil_property_list_changed():
+	can_attack = true
