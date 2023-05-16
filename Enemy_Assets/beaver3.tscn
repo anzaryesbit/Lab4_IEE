@@ -42,7 +42,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f3kp1")
 }],
-"loop": true,
+"loop": false,
 "name": &"damaged",
 "speed": 10.0
 }, {
@@ -83,14 +83,18 @@ script = ExtResource("1_fb4j3")
 
 [node name="AnimatedBeaver" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tyxsx")
-animation = &"damaged"
+animation = &"idle"
 autoplay = "walking"
-frame_progress = 0.843997
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_yu85v")
 
-[node name="Damageable" type="Node" parent="."]
+[node name="Damageable" type="Node" parent="." node_paths=PackedStringArray("sprite", "timer")]
 script = ExtResource("3_nktov")
+sprite = NodePath("../AnimatedBeaver")
+timer = NodePath("../DamagedTimer")
+
+[node name="DamagedTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
