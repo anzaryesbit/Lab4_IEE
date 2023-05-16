@@ -948,7 +948,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_c83wg"]
 resource_name = "attack"
-length = 0.8
+length = 0.3
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -980,10 +981,10 @@ tracks/2/path = NodePath("Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 5]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -992,7 +993,7 @@ tracks/3/path = NodePath("Sword:monitoring")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.7),
+"times": PackedFloat32Array(0, 0.15, 0.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -1222,7 +1223,7 @@ transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_mlejy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4cuj"]
-size = Vector2(15.5, 26.75)
+size = Vector2(19.5, 26.75)
 
 [node name="Node" type="Node"]
 
@@ -1233,24 +1234,30 @@ layer_0/tile_data = PackedInt32Array(-131098, 0, 7, -65562, 0, 8, -26, 0, 9, 655
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Beaver" parent="." instance=ExtResource("9_deu22")]
+position = Vector2(262, 4)
+
+[node name="Beaver3" parent="." instance=ExtResource("10_bbwcy")]
+position = Vector2(69, -143)
+
 [node name="Terry" type="CharacterBody2D" parent="."]
 script = ExtResource("1_s5wt6")
 
 [node name="health" type="RichTextLabel" parent="Terry" node_paths=PackedStringArray("character")]
-offset_left = -147.0
-offset_top = -83.0
-offset_right = -114.0
-offset_bottom = -60.0
+offset_left = -234.0
+offset_top = -129.0
+offset_right = -201.0
+offset_bottom = -106.0
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("11_om2ux")
 character = NodePath("..")
 
 [node name="health_amount" type="RichTextLabel" parent="Terry" node_paths=PackedStringArray("character")]
-offset_left = -113.0
-offset_top = -83.0
-offset_right = -51.0
-offset_bottom = -57.0
+offset_left = -200.0
+offset_top = -129.0
+offset_right = -138.0
+offset_bottom = -103.0
 script = ExtResource("12_d3jxc")
 character = NodePath("..")
 
@@ -1297,7 +1304,7 @@ script = ExtResource("14_nrl67")
 return_state = NodePath("../Ground")
 
 [node name="Timer" type="Timer" parent="Terry/CharacterStateMachine/Attack"]
-wait_time = 0.8
+wait_time = 0.3
 one_shot = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Terry"]
@@ -1316,17 +1323,12 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_mlejy")
 parameters/Move/blend_position = 0
 
 [node name="Sword" type="Area2D" parent="Terry"]
+monitoring = false
 script = ExtResource("15_o0311")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Terry/Sword"]
-position = Vector2(18.25, 2.625)
+position = Vector2(20.25, 2.625)
 shape = SubResource("RectangleShape2D_d4cuj")
-
-[node name="Beaver" parent="." instance=ExtResource("9_deu22")]
-position = Vector2(262, 4)
-
-[node name="Beaver3" parent="." instance=ExtResource("10_bbwcy")]
-position = Vector2(69, -143)
 
 [node name="Devil" parent="." instance=ExtResource("18_ggmge")]
 position = Vector2(47, 8)
