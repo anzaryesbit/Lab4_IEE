@@ -8,13 +8,13 @@ class_name Devil
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
-func _on_interactable_area_body_entered(body):
+func _on_interactable_area_body_entered(_body):
 	pass
 
-func _on_interactable_area_body_exited(body):
+func _on_interactable_area_body_exited(_body):
 	pass
 
-func _input(event):
+func _input(_event):
 	pass
 
 func use_dialogue():

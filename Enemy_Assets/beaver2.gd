@@ -17,9 +17,11 @@ var end_pos
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 func _ready():
 	start_pos = position
 	end_pos = start_pos + walk_dist
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -81,8 +83,6 @@ func update_damaged():
 	else:
 		damaged = true
 
-
-
-func _on_hit_box_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+func _on_hit_box_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
 	if body.name == "Terry":
 		player.hearts -= 1

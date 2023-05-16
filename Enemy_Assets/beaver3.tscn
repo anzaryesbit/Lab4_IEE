@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://l4fg0iq212sk"]
+[gd_scene load_steps=15 format=3 uid="uid://l4fg0iq212sk"]
 
 [ext_resource type="Script" path="res://Enemy_Assets/beaver3.gd" id="1_fb4j3"]
 [ext_resource type="Texture2D" uid="uid://bikijw47n4prp" path="res://Enemy_Assets/beaver3_2.png" id="2_6vqo5"]
@@ -76,7 +76,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu85v"]
-size = Vector2(20, 25)
+size = Vector2(21, 25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_km1gx"]
+size = Vector2(24.5, 28.5)
 
 [node name="Beaver3" type="CharacterBody2D"]
 script = ExtResource("1_fb4j3")
@@ -87,7 +90,7 @@ animation = &"idle"
 autoplay = "walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 0.5)
+position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_yu85v")
 
 [node name="Damageable" type="Node" parent="." node_paths=PackedStringArray("sprite", "timer")]
@@ -98,3 +101,11 @@ timer = NodePath("../DamagedTimer")
 [node name="DamagedTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(2.75, -0.75)
+shape = SubResource("RectangleShape2D_km1gx")
+
+[connection signal="body_shape_entered" from="HitBox" to="." method="_on_hit_box_body_shape_entered"]

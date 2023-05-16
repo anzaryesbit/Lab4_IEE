@@ -40,7 +40,7 @@ func _input(event):
 	if event.is_action_pressed("interact"):
 		next_script()
 
-func next_script(event = null):
+func next_script():
 	current_dialogue_id += 1
 	if current_dialogue_id == len(dialogue) - 1:
 		$Timer.start()

@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 
 @onready var sprite : AnimatedSprite2D = $AnimatedBeaver
 @onready var timer : Timer = $DamagedTimer
+@export var player : Player
 
 #@export var terry : Player = $Terry
 
@@ -58,3 +59,8 @@ func update_damaged():
 		damaged = false
 	else:
 		damaged = true
+
+
+func _on_hit_box_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
+	if body.name == "Terry":
+		player.hearts -= 1

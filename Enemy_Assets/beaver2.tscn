@@ -115,7 +115,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yu85v"]
-size = Vector2(26, 22)
+size = Vector2(27, 22)
 
 [node name="Beaver" type="CharacterBody2D"]
 script = ExtResource("1_56rpt")
@@ -143,7 +143,7 @@ one_shot = true
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(1, 0)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_yu85v")
 
 [connection signal="body_shape_entered" from="HitBox" to="." method="_on_hit_box_body_shape_entered"]

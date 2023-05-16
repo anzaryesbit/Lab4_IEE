@@ -13,13 +13,10 @@ func on_enter():
 	timer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if timer.is_stopped():
 		next_state = return_state
 		playback.travel(return_animation_node)
 
-func _on_animation_player_animation_finished(anim_name):
-	if(anim_name == "attack"):
-		next_state = return_state
-		playback.travel(return_animation_node)
+
 

@@ -14,7 +14,6 @@ var can_attack = false
 
 # velocity.y = jump_velocity
 func state_input(event : InputEvent):
-	var global = load("res://global.gd")
 	if (event.is_action_pressed("jump")):
 		if get_parent().get_parent().get_parent().get_node("Jump_Devil").accepted_deal == true:
 			jump()
@@ -23,9 +22,10 @@ func state_input(event : InputEvent):
 			attack()
 
 func jump():
+	playback.travel(jump_animation)
 	character.velocity.y = JUMP_VELOCITY
 	next_state = air_state
-	playback.travel(jump_animation)
+	
 	
 func attack():
 	next_state = attack_state

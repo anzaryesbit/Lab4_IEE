@@ -84,10 +84,3 @@ func get_health():
 
 func game_over():
 	get_tree().change_scene_to_file("res://game_over_screen.tscn")
-
-#func _on_player_hitbox_body_entered(_body):
-#	hearts -= 1
-#	#$Control/Hearts.set_size(Vector2(hearts * 32, 32))
-#	if (hearts <= 0):
-#		print("You died")
-
