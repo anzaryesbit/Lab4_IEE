@@ -20,6 +20,10 @@ var direction : Vector2 = Vector2.ZERO
 var animation_locked : bool = false
 var in_air : bool = false
 
+func _input(event):
+	if event.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
+
 func _ready():
 	animation_tree.active = true
 	
@@ -38,11 +42,6 @@ func _physics_process(delta):
 		if in_air == true:
 			land()
 		in_air = false
-
-	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		#jump()
-		pass
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
