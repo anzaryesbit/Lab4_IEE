@@ -7,11 +7,13 @@ const JUMP_VELOCITY = -400.0
 @onready var sprite : AnimatedSprite2D = $AnimatedBeaver
 @onready var timer : Timer = $DamagedTimer
 
+#@export var terry : Player = $Terry
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var direction : Vector2 = Vector2.RIGHT
-
+var damaged = false
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -28,12 +30,16 @@ func _physics_process(delta):
 		velocity.x = direction.x * SPEED
 		direction.x = -1 * direction.x
 
-	if timer.is_stopped():
+	if damaged:
+		update_animation()
+		move_and_slide()
+		update_damaged()
+	else:
 		move_and_slide()
 		update_dir()
 		update_animation()
-	else:
-		update_animation()
+		update_damaged()
+		
 
 func update_dir():
 	if direction.x < 0:
@@ -46,3 +52,9 @@ func update_animation():
 		sprite.play("walking")
 	else:
 		sprite.play("damaged")
+		
+func update_damaged():
+	if timer.is_stopped():
+		damaged = false
+	else:
+		damaged = true

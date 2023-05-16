@@ -132,7 +132,7 @@ shape = SubResource("RectangleShape2D_yu85v")
 
 [node name="Damageable" type="Node" parent="." node_paths=PackedStringArray("sprite", "timer")]
 script = ExtResource("4_ena40")
-health = 3
+health = 8
 sprite = NodePath("../AnimatedBeaver")
 timer = NodePath("../DamagedTimer")
 

@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export var player : Player
+@export var player : CharacterBody2D
 @export var facing_collision_shape : FacingCollisionShape
 
 
@@ -21,6 +21,14 @@ func _on_body_entered(body):
 	for child in body.get_children():
 		if child is Damageable:
 			child.hit(1)
+			var enemy = child.get_parent()
+			print("terry:", player.global_position.x, "--- enemy:", enemy.global_position.x)
+			if player.global_position.x < enemy.global_position.x:
+#				enemy.position.x += 15
+				enemy.set_velocity(Vector2(200, -100))
+			else:
+#				enemy.position.x -= 15
+				enemy.set_velocity(Vector2(-200, -100))
 	
 	print(body.name)
 
