@@ -1,25 +1,13 @@
 extends CharacterBody2D
 
-
 const SPEED = 50.0
 const JUMP_VELOCITY = -400.0
 
 var animated = false
 var damaged = false
 
-@onready var sprite : AnimatedSprite2D = $AnimatedBeaver
-@onready var timer : Timer = $DamagedTimer
-@export var walk_dist : Vector2
-
-var start_pos
-var end_pos
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-func _ready():
-	start_pos = position
-	end_pos = start_pos + walk_dist
 
 
 func _physics_process(delta):
@@ -30,10 +18,6 @@ func _physics_process(delta):
 	# Handle Jump.
 #	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 #		velocity.y = JUMP_VELOCITY
-
-
-
-
 #	if direction:
 #		velocity.x = direction * SPEED
 #	else:
@@ -85,3 +69,6 @@ func update_damaged():
 		damaged = true
 
 
+func _on_hit_box_body_entered(body):
+	if body.name == "Terry":
+		player.hearts -= 1

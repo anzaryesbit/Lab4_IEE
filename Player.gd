@@ -24,7 +24,10 @@ func _ready():
 	animation_tree.active = true
 	
 func _process(_delta):
-	pass
+	if max_hearts <= hearts:
+		hearts = max_hearts
+	if hearts == 0:
+		game_over()
 	
 func _physics_process(delta):
 	# Add the gravity.
@@ -79,6 +82,9 @@ func attack():
 	
 func get_health():
 	return hearts
+
+func game_over():
+	get_tree().change_scene_to_file("res://game_over_screen.tscn")
 
 #func _on_player_hitbox_body_entered(_body):
 #	hearts -= 1
