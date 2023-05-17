@@ -20,6 +20,8 @@ func _process(_delta):
 func _on_body_entered(body):
 	for child in body.get_children():
 		if child is Damageable:
+			if child.name == "BossBeaver":
+				get_parent().get_parent().get_node("BossBeaver").fighting = true
 			child.hit(1)
 			var enemy = child.get_parent()
 			$Sword_Swoosh.play()
@@ -31,7 +33,6 @@ func _on_body_entered(body):
 #				enemy.position.x -= 15
 				enemy.set_velocity(Vector2(-200, -100))
 	
-	print(body.name)
 
 func _on_player_facing_direction_changed(facing_right):
 	if facing_right:
