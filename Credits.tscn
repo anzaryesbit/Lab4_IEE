@@ -1,0 +1,91 @@
+[gd_scene load_steps=4 format=3 uid="uid://bba5vj77nhivr"]
+
+[ext_resource type="FontFile" uid="uid://bysm3ee8m7md8" path="res://fonts/FrontPageNeue.otf" id="1_7d7mb"]
+[ext_resource type="Script" path="res://Credits.gd" id="1_sqqr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uiyul"]
+bg_color = Color(0.745098, 0.545098, 0.486275, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+shadow_size = 2
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sqqr6")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_uiyul")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -165.0
+offset_right = 211.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Credits" type="Label" parent="Panel/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_7d7mb")
+theme_override_font_sizes/font_size = 64
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Aiyana" type="Label" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Aiyana Arnobit: Team Lead"
+
+[node name="Brandon" type="Label" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Brandon Pragasa: Mapmaker"
+
+[node name="Trenten" type="Label" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Trenten Spicer: Enemy Animator"
+
+[node name="Tristan" type="Label" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Tristan de Lemos: Screen Creator"
+
+[node name="Button" type="Button" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

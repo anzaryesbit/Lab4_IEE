@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpr5af0xferwl"]
+
+[ext_resource type="FontFile" uid="uid://bysm3ee8m7md8" path="res://fonts/FrontPageNeue.otf" id="2_kjj7m"]
+
+[sub_resource type="GDScript" id="GDScript_6yjnt"]
+script/source = "extends Control
+
+
+func _on_start_pressed():
+	get_tree().change_scene_to_file(\"res://game.tscn\")
+
+
+func _on_credits_pressed():
+	get_tree().change_scene_to_file(\"res://Credits.tscn\")
+"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqf8h"]
+bg_color = Color(0.745098, 0.545098, 0.486275, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+shadow_size = 2
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_6yjnt")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nqf8h")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_kjj7m")
+theme_override_font_sizes/font_size = 64
+text = "Terry's Turmoil"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Start" type="Button" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "  Start  "
+
+[node name="Credits" type="Button" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = " Credits "
+
+[connection signal="pressed" from="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
