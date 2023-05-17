@@ -130,11 +130,12 @@ autoplay = "idle"
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_yu85v")
 
-[node name="Damageable" type="Node" parent="." node_paths=PackedStringArray("sprite", "timer")]
+[node name="Damageable" type="Node" parent="." node_paths=PackedStringArray("sprite", "timer", "character")]
 script = ExtResource("4_ena40")
 health = 8
 sprite = NodePath("../AnimatedBeaver")
 timer = NodePath("../DamagedTimer")
+character = NodePath("..")
 
 [node name="DamagedTimer" type="Timer" parent="."]
 wait_time = 0.5
