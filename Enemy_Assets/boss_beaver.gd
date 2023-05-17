@@ -58,7 +58,8 @@ func _physics_process(delta):
 #		if velocity.x == 0:
 #			velocity.x = direction.x * SPEED
 #			direction.x = -1 * direction.x
-		move()
+		if timer.is_stopped():
+			move()
 		move_and_slide()
 #		update_dir()
 		update_animation()
@@ -75,6 +76,7 @@ func update_dir():
 func update_animation():
 	if dialogue.d_active == false:
 		talking = false
+	
 	if timer.is_stopped():
 		if fighting:
 			sprite.play("fight")
@@ -138,4 +140,5 @@ func use_dialogue():
 
 func _on_hit_box_body_entered(body):
 	if body.name == "Terry" && talked:
+#		sprite.play("fight")
 		player.hearts -= 1

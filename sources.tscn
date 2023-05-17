@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvlfon1yn73ye"]
+
+[ext_resource type="Script" path="res://sources.gd" id="1_pi2pp"]
+[ext_resource type="FontFile" uid="uid://bysm3ee8m7md8" path="res://fonts/FrontPageNeue.otf" id="2_wntjl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvsvu"]
+bg_color = Color(0.745098, 0.545098, 0.486275, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+shadow_size = 2
+
+[node name="sources" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pi2pp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vvsvu")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -165.0
+offset_right = 211.0
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Rows" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Sources" type="Label" parent="Panel/MarginContainer/Rows"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_wntjl")
+theme_override_font_sizes/font_size = 64
+text = "Sources"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Panel/MarginContainer/Rows"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/Rows/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="sources1" type="Label" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "	www.youtube.com/watch?v=fuGiJdMrCAk&ab_channel=Chris%27Tutorials
+	www.youtube.com/watch?v=NVAXjTzqTyE&ab_channel=Chris%27Tutorials
+	www.youtube.com/watch?v=7CCofjq_dHM&ab_channel=DevWorm
+	www.youtube.com/watch?v=2oPzZqHR2Rg
+	www.youtube.com/watch?v=Luf2Kr5s3BM
+	www.samplefocus.com"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Back2" type="Button" parent="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Back"
+
+[connection signal="pressed" from="Panel/MarginContainer/Rows/CenterContainer/VBoxContainer/HBoxContainer/Back2" to="." method="_on_back_2_pressed"]

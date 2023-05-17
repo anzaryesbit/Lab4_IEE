@@ -33,12 +33,13 @@
 [ext_resource type="AudioStream" uid="uid://l85eko1cnyhm" path="res://audio/thud-kick_B_minor.wav" id="16_dof85"]
 [ext_resource type="Script" path="res://FacingCollisionShapeSword.gd" id="17_ekh4d"]
 [ext_resource type="PackedScene" uid="uid://ix0xncle3hce" path="res://Devil_Assets/devil.tscn" id="18_ggmge"]
-[ext_resource type="PackedScene" uid="uid://deaqa4u0cl7gn" path="res://Devil_Assets/jump_devil.tscn" id="19_xtxkk"]
+[ext_resource type="PackedScene" path="res://Devil_Assets/jump_devil.tscn" id="19_xtxkk"]
 [ext_resource type="PackedScene" uid="uid://csym6271uk7od" path="res://heart.tscn" id="24_5asm0"]
 [ext_resource type="AudioStream" uid="uid://dl6x6ukkixi2u" path="res://audio/sword-blade-slash-metallic.wav" id="26_cdn5l"]
 [ext_resource type="AudioStream" uid="uid://c0h4qy60nbepo" path="res://audio/kordhell-type-cowbell-melody-land-of-fire_160bpm_E_minor.wav" id="28_22pq4"]
-[ext_resource type="PackedScene" uid="uid://b13signh8ftek" path="res://Enemy_Assets/boss_beaver.tscn" id="29_2ercf"]
-[ext_resource type="PackedScene" uid="uid://4775a36fw7jw" path="res://Devil_Assets/double_jump.tscn" id="33_v2ltf"]
+[ext_resource type="PackedScene" uid="uid://fp3cno5ifatt" path="res://Enemy_Assets/boss_beaver.tscn" id="29_2ercf"]
+[ext_resource type="PackedScene" path="res://Devil_Assets/double_jump.tscn" id="33_v2ltf"]
+[ext_resource type="Texture2D" uid="uid://bg24cdm7ew266" path="res://Sky.png" id="34_cnk7i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xhuoi"]
 texture = ExtResource("4_1epqi")
@@ -2294,6 +2295,12 @@ player = NodePath("../Terry")
 [node name="Heart13" parent="." node_paths=PackedStringArray("player") instance=ExtResource("24_5asm0")]
 position = Vector2(2829, -206)
 player = NodePath("../Terry")
+
+[node name="Sky" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(3138, -262)
+scale = Vector2(4.13854, 1.23519)
+texture = ExtResource("34_cnk7i")
 
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Landing" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Attack" method="_on_animation_player_animation_finished"]
