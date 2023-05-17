@@ -23,7 +23,7 @@ var in_air : bool = false
 
 func _input(event):
 	if event.is_action_pressed("restart"):
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://title_screen.tscn")
 
 func _ready():
 	animation_tree.active = true
@@ -34,7 +34,7 @@ func _process(_delta):
 	if hearts == 0:
 		game_over()
 	if won == true:
-		get_tree().change_scene_to_file("res://Credits.tscn")
+		get_tree().change_scene_to_file("res://congrats.tscn")
 	
 func _physics_process(delta):
 	# Add the gravity.
