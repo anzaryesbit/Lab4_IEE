@@ -95,6 +95,7 @@ shape = SubResource("RectangleShape2D_yu85v")
 
 [node name="Damageable" type="Node" parent="." node_paths=PackedStringArray("sprite", "timer", "character")]
 script = ExtResource("3_nktov")
+health = 3
 sprite = NodePath("../AnimatedBeaver")
 timer = NodePath("../DamagedTimer")
 character = NodePath("..")

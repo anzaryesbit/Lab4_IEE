@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b13signh8ftek"]
+[gd_scene load_steps=37 format=3 uid="uid://fp3cno5ifatt"]
 
 [ext_resource type="Texture2D" uid="uid://bvmjwdp5bcu0" path="res://Enemy_Assets/boss_beaver.png" id="1_j8q5w"]
 [ext_resource type="Script" path="res://Enemy_Assets/boss_beaver.gd" id="1_trpu6"]
@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c6pfpj5encjun" path="res://Enemy_Assets/boss_beaver_smoke.png" id="2_v35wr"]
 [ext_resource type="Texture2D" uid="uid://co5805ujc38wd" path="res://Enemy_Assets/boss_beaver_fight.png" id="3_uds0w"]
 [ext_resource type="Texture2D" uid="uid://5kxkl6v3ut45" path="res://Enemy_Assets/boss_beaver_walking.png" id="5_rkkuy"]
-[ext_resource type="PackedScene" uid="uid://26j33k26moxc" path="res://test_dialogue.tscn" id="8_gfjur"]
+[ext_resource type="PackedScene" path="res://test_dialogue.tscn" id="8_gfjur"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yygw1"]
 atlas = ExtResource("2_qq4jo")
