@@ -103,7 +103,7 @@ func _input(_event):
 		use_dialogue()
 
 func use_dialogue():
-	dialogue.data_path = "res://dialogue/enemy_dialogue.json"
+	dialogue.data_path = "res://dialogue/boss_dialogue.json"
 	talked = true
 	if dialogue:
 		dialogue.start()

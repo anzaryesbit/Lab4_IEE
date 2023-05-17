@@ -6,6 +6,7 @@ signal facing_direction_changed(facing_right : bool)
 
 var max_hearts = 10
 var hearts = 10
+var won = false
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -32,6 +33,8 @@ func _process(_delta):
 		hearts = max_hearts
 	if hearts == 0:
 		game_over()
+	if won == true:
+		get_tree().change_scene_to_file("res://game_over_screen.tscn")
 	
 func _physics_process(delta):
 	# Add the gravity.
