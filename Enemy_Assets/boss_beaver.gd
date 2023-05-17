@@ -75,6 +75,7 @@ func update_dir():
 func update_animation():
 	if dialogue.d_active == false:
 		talking = false
+	
 	if timer.is_stopped():
 		if fighting:
 			sprite.play("fight")
@@ -138,4 +139,5 @@ func use_dialogue():
 
 func _on_hit_box_body_entered(body):
 	if body.name == "Terry" && talked:
+#		sprite.play("fight")
 		player.hearts -= 1
