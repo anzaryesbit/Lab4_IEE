@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b0x3l5uy4d2h1"]
 
 [ext_resource type="Script" path="res://game_over_screen.gd" id="1_0dvh1"]
-[ext_resource type="FontFile" path="res://fonts/FrontPageNeue.otf" id="2_hmtmw"]
+[ext_resource type="FontFile" uid="uid://bysm3ee8m7md8" path="res://fonts/FrontPageNeue.otf" id="2_hmtmw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8330d"]
 bg_color = Color(0.745098, 0.545098, 0.486275, 1)
