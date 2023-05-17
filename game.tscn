@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://dvt6xmexswlv3"]
+[gd_scene load_steps=73 format=3 uid="uid://dvt6xmexswlv3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_s5wt6"]
 [ext_resource type="Texture2D" uid="uid://obaeoh3dyjqk" path="res://terry_assets/idle.png" id="1_uao8v"]
@@ -13,7 +13,6 @@
 [ext_resource type="Texture2D" uid="uid://cpl530wko3a32" path="res://background_samples/samplescene.png" id="4_1epqi"]
 [ext_resource type="Texture2D" uid="uid://cb362fkc4qv6" path="res://background_samples/wood1.png" id="4_4f1kn"]
 [ext_resource type="Texture2D" uid="uid://bm8duyc2ukka" path="res://terry_assets/falling-turtle.png" id="4_jjisl"]
-[ext_resource type="Texture2D" uid="uid://dlwcx2che7ayw" path="res://background_samples/dirt.png" id="4_k03ad"]
 [ext_resource type="Texture2D" uid="uid://djtrlro5m60ex" path="res://terry_assets/attack-turtle.png" id="4_ru1vl"]
 [ext_resource type="Texture2D" uid="uid://bq2nxidufcelj" path="res://background_samples/winter.png" id="4_ryt0g"]
 [ext_resource type="Texture2D" uid="uid://ohfflprx24po" path="res://background_samples/dirt2.png" id="5_2wta0"]
@@ -2035,14 +2034,6 @@ offset_top = 33.0
 offset_right = 3911.0
 offset_bottom = 436.0
 texture = ExtResource("3_0n7l8")
-stretch_mode = 1
-
-[node name="Wall5" type="TextureRect" parent="."]
-offset_left = 486.0
-offset_top = -244.0
-offset_right = 667.0
-offset_bottom = -83.0
-texture = ExtResource("4_k03ad")
 stretch_mode = 1
 
 [node name="Wall6" type="TextureRect" parent="."]
