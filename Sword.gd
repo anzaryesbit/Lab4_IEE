@@ -1,7 +1,7 @@
 extends Area2D
 
 
-@export var player : CharacterBody2D
+@export var player : Player
 @export var facing_collision_shape : FacingCollisionShape
 
 

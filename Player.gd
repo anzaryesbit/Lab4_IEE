@@ -6,6 +6,7 @@ signal facing_direction_changed(facing_right : bool)
 
 var max_hearts = 10
 var hearts = 10
+var won = false
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -32,16 +33,13 @@ func _process(_delta):
 		hearts = max_hearts
 	if hearts == 0:
 		game_over()
+	if won == true:
+		get_tree().change_scene_to_file("res://game_over_screen.tscn")
 	
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		in_air = true
-	else:
-		if in_air == true:
-			land()
-		in_air = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -65,19 +63,6 @@ func update_facing_direction():
 	elif direction.x < 0:
 		sprite.flip_h = true
 	emit_signal("facing_direction_changed", !sprite.flip_h)
-
-func land():
-	#animated_sprite.play("fall")
-	animation_locked = false
-
-func jump():
-	velocity.y = JUMP_VELOCITY
-	# animated_sprite.play("jump")
-	animation_locked = true
-
-func attack():
-	# animated_sprite.play("attack")
-	pass
 	
 func get_health():
 	return hearts

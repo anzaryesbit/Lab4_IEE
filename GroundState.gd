@@ -20,6 +20,8 @@ func state_input(event : InputEvent):
 	if (event.is_action_pressed("attack")):
 		if get_parent().get_parent().get_parent().get_node("Attack_Devil").accepted_deal == true:
 			attack()
+	if !character.is_on_floor():
+		next_state = air_state
 
 func jump():
 	playback.travel(jump_animation)

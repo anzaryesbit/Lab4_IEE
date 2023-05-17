@@ -272,6 +272,8 @@ scale = Vector2(0.25, 0.25)
 text = "interact (e)"
 
 [node name="Dialogue" parent="." instance=ExtResource("8_gfjur")]
+offset = Vector2(6600, -140)
+transform = Transform2D(1, 0, 0, 1, 6600, -140)
 
 [node name="InteractableArea" type="Area2D" parent="."]
 
