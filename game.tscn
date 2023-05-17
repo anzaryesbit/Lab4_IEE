@@ -2111,11 +2111,9 @@ volume_db = -5.0
 
 [node name="Attack_Devil" parent="." instance=ExtResource("18_ggmge")]
 position = Vector2(-286, -42)
-accepted_deal = true
 
 [node name="Jump_Devil" parent="." instance=ExtResource("19_xtxkk")]
 position = Vector2(382, 7)
-accepted_deal = true
 
 [node name="Background_Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("28_22pq4")

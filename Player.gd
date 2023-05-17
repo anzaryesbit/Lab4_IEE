@@ -40,11 +40,6 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-		in_air = true
-	else:
-		if in_air == true:
-			land()
-		in_air = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -68,19 +63,6 @@ func update_facing_direction():
 	elif direction.x < 0:
 		sprite.flip_h = true
 	emit_signal("facing_direction_changed", !sprite.flip_h)
-
-func land():
-	#animated_sprite.play("fall")
-	animation_locked = false
-
-func jump():
-	velocity.y = JUMP_VELOCITY
-	# animated_sprite.play("jump")
-	animation_locked = true
-
-func attack():
-	# animated_sprite.play("attack")
-	pass
 	
 func get_health():
 	return hearts
