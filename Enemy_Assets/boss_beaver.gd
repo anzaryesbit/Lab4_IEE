@@ -17,6 +17,11 @@ var damaged = false
 var talked = true
 var talking = false
 var fighting = false
+var can_interact = false
+var dialogue = null
+
+func _ready():
+	dialogue = get_node("Dialogue")
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -78,6 +83,32 @@ func update_damaged():
 	else:
 		damaged = true
 
-func _on_hit_box_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
-	if body.name == "Terry" & talked:
+
+func _on_interactable_area_body_entered(body):
+	print(body.name)
+	if body.name == "Terry":
+		$Label.visible = true
+		can_interact = true
+
+
+func _on_interactable_area_body_exited(body):
+	if body.name == "Terry":
+		$Label.visible = false
+		can_interact = false
+		
+
+func _input(_event):
+	if Input.is_key_pressed(KEY_E) and can_interact:
+		$Label.visible = false
+		use_dialogue()
+
+func use_dialogue():
+	dialogue.data_path = "res://dialogue/enemy_dialogue.json"
+	talked = true
+	if dialogue:
+		dialogue.start()
+
+
+func _on_hit_box_body_entered(body):
+	if body.name == "Terry" && talked:
 		player.hearts -= 1
