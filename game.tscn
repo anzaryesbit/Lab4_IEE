@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dvt6xmexswlv3"]
+[gd_scene load_steps=60 format=3 uid="uid://dvt6xmexswlv3"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_s5wt6"]
 [ext_resource type="Texture2D" uid="uid://obaeoh3dyjqk" path="res://terry_assets/idle.png" id="1_uao8v"]
@@ -21,10 +21,13 @@
 [ext_resource type="Script" path="res://health_amount.gd" id="12_d3jxc"]
 [ext_resource type="Script" path="res://Attack.gd" id="14_nrl67"]
 [ext_resource type="Script" path="res://Sword.gd" id="15_o0311"]
+[ext_resource type="AudioStream" uid="uid://l85eko1cnyhm" path="res://audio/thud-kick_B_minor.wav" id="16_dof85"]
 [ext_resource type="Script" path="res://FacingCollisionShapeSword.gd" id="17_ekh4d"]
 [ext_resource type="PackedScene" uid="uid://ix0xncle3hce" path="res://Devil_Assets/devil.tscn" id="18_ggmge"]
 [ext_resource type="PackedScene" uid="uid://deaqa4u0cl7gn" path="res://Devil_Assets/jump_devil.tscn" id="19_xtxkk"]
 [ext_resource type="PackedScene" uid="uid://csym6271uk7od" path="res://heart.tscn" id="24_5asm0"]
+[ext_resource type="AudioStream" uid="uid://dl6x6ukkixi2u" path="res://audio/sword-blade-slash-metallic.wav" id="26_cdn5l"]
+[ext_resource type="AudioStream" uid="uid://c0h4qy60nbepo" path="res://audio/kordhell-type-cowbell-melody-land-of-fire_160bpm_E_minor.wav" id="28_22pq4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xhuoi"]
 texture = ExtResource("4_1epqi")
@@ -1689,6 +1692,9 @@ attack_state = NodePath("../Attack")
 script = ExtResource("11_p7q5y")
 landing_state = NodePath("../Landing")
 
+[node name="Landing_Sound" type="AudioStreamPlayer2D" parent="Terry/CharacterStateMachine/Air"]
+stream = ExtResource("16_dof85")
+
 [node name="Landing" type="Node" parent="Terry/CharacterStateMachine" node_paths=PackedStringArray("ground_state")]
 script = ExtResource("12_2wqhq")
 ground_state = NodePath("../Ground")
@@ -1729,12 +1735,21 @@ script = ExtResource("17_ekh4d")
 facing_left_position = Vector2(-20.25, 2.625)
 facing_right_position = Vector2(20.25, 2.625)
 
+[node name="Sword_Swoosh" type="AudioStreamPlayer2D" parent="Terry/Sword"]
+stream = ExtResource("26_cdn5l")
+volume_db = -5.0
+
 [node name="Attack_Devil" parent="." instance=ExtResource("18_ggmge")]
 position = Vector2(-286, -42)
 
 [node name="Jump_Devil" parent="." instance=ExtResource("19_xtxkk")]
 position = Vector2(382, 7)
 accepted_deal = true
+
+[node name="Background_Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("28_22pq4")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Landing" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Terry/AnimationPlayer" to="Terry/CharacterStateMachine/Attack" method="_on_animation_player_animation_finished"]
