@@ -1,19 +1,25 @@
-[gd_scene load_steps=68 format=3 uid="uid://dvt6xmexswlv3"]
+[gd_scene load_steps=74 format=3 uid="uid://dvt6xmexswlv3"]
 
+[ext_resource type="Texture2D" uid="uid://wufto2kb4woy" path="res://Sky.png" id="1_pmxx0"]
 [ext_resource type="Script" path="res://Player.gd" id="1_s5wt6"]
 [ext_resource type="Texture2D" uid="uid://obaeoh3dyjqk" path="res://terry_assets/idle.png" id="1_uao8v"]
 [ext_resource type="Texture2D" uid="uid://bkr7lt0r1osgx" path="res://background_samples/background_tiles.png" id="2_21ude"]
 [ext_resource type="Texture2D" uid="uid://dc7tmjmhufm68" path="res://background_samples/fall.png" id="2_72w7n"]
+[ext_resource type="Texture2D" uid="uid://ddbamfj13fo31" path="res://background_samples/wall.png" id="2_88jeq"]
 [ext_resource type="Texture2D" uid="uid://bxqfukch7rgcj" path="res://terry_assets/jumping-turtle.png" id="2_m1xkx"]
+[ext_resource type="Texture2D" uid="uid://20upijcq8lar" path="res://background_samples/summer2.png" id="3_0n7l8"]
 [ext_resource type="Texture2D" uid="uid://c5vo7dl3slqfe" path="res://background_samples/control panel.png" id="3_dujkq"]
 [ext_resource type="Texture2D" uid="uid://b62csllamfpga" path="res://background_samples/summer.png" id="3_ju5ef"]
 [ext_resource type="Texture2D" uid="uid://cpert2vaivg20" path="res://terry_assets/running-turtle.png" id="3_kd1ax"]
 [ext_resource type="Texture2D" uid="uid://cpl530wko3a32" path="res://background_samples/samplescene.png" id="4_1epqi"]
 [ext_resource type="Texture2D" uid="uid://cb362fkc4qv6" path="res://background_samples/wood1.png" id="4_4f1kn"]
 [ext_resource type="Texture2D" uid="uid://bm8duyc2ukka" path="res://terry_assets/falling-turtle.png" id="4_jjisl"]
+[ext_resource type="Texture2D" uid="uid://dlwcx2che7ayw" path="res://background_samples/dirt.png" id="4_k03ad"]
 [ext_resource type="Texture2D" uid="uid://djtrlro5m60ex" path="res://terry_assets/attack-turtle.png" id="4_ru1vl"]
 [ext_resource type="Texture2D" uid="uid://bq2nxidufcelj" path="res://background_samples/winter.png" id="4_ryt0g"]
+[ext_resource type="Texture2D" uid="uid://ohfflprx24po" path="res://background_samples/dirt2.png" id="5_2wta0"]
 [ext_resource type="Texture2D" uid="uid://bvpbbnsmiip8s" path="res://background_samples/wood2.png" id="5_ycl72"]
+[ext_resource type="Texture2D" uid="uid://uv20lxsiqa1e" path="res://background_samples/wood3.png" id="6_e5d8l"]
 [ext_resource type="PackedScene" uid="uid://l4fg0iq212sk" path="res://Enemy_Assets/beaver3.tscn" id="7_26xve"]
 [ext_resource type="PackedScene" uid="uid://cjqqa2s4fbx58" path="res://Enemy_Assets/beaver2.tscn" id="9_deu22"]
 [ext_resource type="Script" path="res://CharacterStateMachine.gd" id="9_fmuif"]
@@ -1992,6 +1998,67 @@ transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition
 size = Vector2(19.5, 26.75)
 
 [node name="Node" type="Node"]
+
+[node name="Sky" type="TextureRect" parent="."]
+offset_left = -968.0
+offset_top = -1705.0
+offset_right = 7173.0
+offset_bottom = 861.0
+texture = ExtResource("1_pmxx0")
+
+[node name="Wall1" type="TextureRect" parent="."]
+offset_left = 243.0
+offset_top = -122.0
+offset_right = 424.0
+offset_bottom = 39.0
+texture = ExtResource("2_88jeq")
+stretch_mode = 1
+
+[node name="Wall2" type="TextureRect" parent="."]
+offset_left = 4325.0
+offset_top = -155.0
+offset_right = 5395.0
+offset_bottom = 685.0
+texture = ExtResource("3_0n7l8")
+stretch_mode = 1
+
+[node name="Wall3" type="TextureRect" parent="."]
+offset_left = 3723.0
+offset_top = 106.0
+offset_right = 4468.0
+offset_bottom = 432.0
+texture = ExtResource("3_0n7l8")
+
+[node name="Wall4" type="TextureRect" parent="."]
+offset_left = 3773.0
+offset_top = 33.0
+offset_right = 3911.0
+offset_bottom = 436.0
+texture = ExtResource("3_0n7l8")
+stretch_mode = 1
+
+[node name="Wall5" type="TextureRect" parent="."]
+offset_left = 486.0
+offset_top = -244.0
+offset_right = 667.0
+offset_bottom = -83.0
+texture = ExtResource("4_k03ad")
+stretch_mode = 1
+
+[node name="Wall6" type="TextureRect" parent="."]
+offset_left = 1541.0
+offset_top = -490.0
+offset_right = 2974.0
+offset_bottom = 140.0
+texture = ExtResource("5_2wta0")
+stretch_mode = 1
+
+[node name="Wall7" type="TextureRect" parent="."]
+offset_left = 6061.0
+offset_top = -478.0
+offset_right = 7128.0
+offset_bottom = 152.0
+texture = ExtResource("6_e5d8l")
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(0, 2)
