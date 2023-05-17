@@ -20,11 +20,18 @@ var direction : Vector2 = Vector2.ZERO
 var animation_locked : bool = false
 var in_air : bool = false
 
+func _input(event):
+	if event.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
+
 func _ready():
 	animation_tree.active = true
 	
 func _process(_delta):
-	pass
+	if max_hearts <= hearts:
+		hearts = max_hearts
+	if hearts == 0:
+		game_over()
 	
 func _physics_process(delta):
 	# Add the gravity.
@@ -35,11 +42,6 @@ func _physics_process(delta):
 		if in_air == true:
 			land()
 		in_air = false
-
-	# Handle Jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		#jump()
-		pass
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -80,9 +82,5 @@ func attack():
 func get_health():
 	return hearts
 
-#func _on_player_hitbox_body_entered(_body):
-#	hearts -= 1
-#	#$Control/Hearts.set_size(Vector2(hearts * 32, 32))
-#	if (hearts <= 0):
-#		print("You died")
-
+func game_over():
+	get_tree().change_scene_to_file("res://game_over_screen.tscn")

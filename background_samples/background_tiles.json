@@ -1,19 +1,19 @@
 { "frames": {
-   "floor_tile1.aseprite": {
-    "frame": { "x": 0, "y": 0, "w": 16, "h": 16 },
+   "background_tiles.aseprite": {
+    "frame": { "x": 0, "y": 0, "w": 320, "h": 80 },
     "rotated": false,
     "trimmed": false,
-    "spriteSourceSize": { "x": 0, "y": 0, "w": 16, "h": 16 },
-    "sourceSize": { "w": 16, "h": 16 },
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 320, "h": 80 },
+    "sourceSize": { "w": 320, "h": 80 },
     "duration": 100
    }
  },
  "meta": {
   "app": "https://www.aseprite.org/",
   "version": "1.2.40-x64",
-  "image": "grass.png",
+  "image": "background_tiles.png",
   "format": "RGBA8888",
-  "size": { "w": 16, "h": 16 },
+  "size": { "w": 320, "h": 80 },
   "scale": "1",
   "frameTags": [
   ],

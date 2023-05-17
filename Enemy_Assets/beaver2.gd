@@ -10,6 +10,7 @@ var damaged = false
 @onready var sprite : AnimatedSprite2D = $AnimatedBeaver
 @onready var timer : Timer = $DamagedTimer
 @export var walk_dist : Vector2
+@export var player : Player
 
 var start_pos
 var end_pos
@@ -21,12 +22,10 @@ func _ready():
 	start_pos = position
 	end_pos = start_pos + walk_dist
 
-
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
 	# Handle Jump.
 #	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 #		velocity.y = JUMP_VELOCITY
@@ -55,7 +54,7 @@ func _physics_process(delta):
 #		update_animation()
 #	else:
 #		update_animation()
-	
+
 func move():
 	if global_position.x <= start_pos.x:
 		velocity.x = SPEED
@@ -77,11 +76,13 @@ func update_animation():
 		sprite.play("idle")
 	else:
 		sprite.play("damaged")
-		
+
 func update_damaged():
 	if timer.is_stopped():
 		damaged = false
 	else:
 		damaged = true
 
-
+func _on_hit_box_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
+	if body.name == "Terry":
+		player.hearts -= 1

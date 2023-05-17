@@ -4,14 +4,19 @@ var can_interact = false
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 var dialogue = null
+var count = 0
 
 func _ready():
 	dialogue = get_node("Dialogue")
 	$AnimatedSprite2D.flip_h = true
 	
-func _process(delta):
+func _process(_delta):
 	if dialogue.talked_to == true:
+		count += 1
 		accepted_deal = true
+		if count == 1:
+			get_parent().get_node("Terry").max_hearts -= 1
+		
 	
 func _on_interactable_area_body_entered(body):
 	print(body.name)
@@ -26,7 +31,7 @@ func _on_interactable_area_body_exited(body):
 		can_interact = false
 		
 
-func _input(event):
+func _input(_event):
 	if Input.is_key_pressed(KEY_E) and can_interact:
 		$Label.visible = false
 		use_dialogue()
