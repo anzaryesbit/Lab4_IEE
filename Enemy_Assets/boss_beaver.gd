@@ -42,7 +42,7 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	
 
-	if not talked:
+	if not talked or talking:
 		update_animation()
 		move_and_slide()
 		update_dir()
@@ -73,8 +73,8 @@ func update_dir():
 		sprite.flip_h = false
 		
 func update_animation():
-#	if dialogue == false:
-#		talking = false
+	if dialogue.d_active == false:
+		talking = false
 	if timer.is_stopped():
 		if fighting:
 			sprite.play("fight")
