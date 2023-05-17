@@ -22,6 +22,7 @@ func _on_body_entered(body):
 		if child is Damageable:
 			child.hit(1)
 			var enemy = child.get_parent()
+			$AudioStreamPlayer2D.play()
 			print("terry:", player.global_position.x, "--- enemy:", enemy.global_position.x)
 			if player.global_position.x < enemy.global_position.x:
 #				enemy.position.x += 15
