@@ -222,7 +222,7 @@ radius = 18.0
 height = 96.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eugvb"]
-size = Vector2(94, 97)
+size = Vector2(60, 97)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y1lih"]
 size = Vector2(163, 70)
@@ -260,7 +260,7 @@ one_shot = true
 [node name="HitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 13.5)
+position = Vector2(-3, 14)
 shape = SubResource("RectangleShape2D_eugvb")
 
 [node name="Label" type="Label" parent="."]
@@ -279,7 +279,7 @@ transform = Transform2D(1, 0, 0, 1, 6600, -140)
 [node name="InteractableArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea"]
-position = Vector2(5.5, 25)
+position = Vector2(-5, 28)
 shape = SubResource("RectangleShape2D_y1lih")
 
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
