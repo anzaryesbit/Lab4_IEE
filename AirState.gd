@@ -10,4 +10,5 @@ func state_process(_delta):
 
 func on_exit():
 	if(next_state == landing_state):
+		$Landing_Sound.play()
 		playback.travel(landing_animation)
