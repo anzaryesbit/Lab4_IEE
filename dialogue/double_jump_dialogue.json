@@ -1,0 +1,11 @@
+[
+	{"name": "garbage", "text": "garbage"},
+	{"name": "Terry", "text" : "Another devil! Do you want to make a deal with me?"},
+	{"name": "Devil", "text": "I'll take a heart, but you can get the ability to jump."},
+	{"name": "Terry", "text": "I have the ability to jump already though."},
+	{"name": "Devil", "text": "I'll give you the ability to jump in the air!"},
+	{"name": "Terry", "text": "Can I think about it before making this deal?"},
+	{"name": "Devil", "text": "Nope, once you've started talking to me, you've locked yourself in your deal"},
+	{"name": "Devil", "text": "You can now double jump. Good luck!"},
+	{"name": "Devil", "text": "We've made a deal already. Go on your way."}
+]

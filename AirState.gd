@@ -13,7 +13,8 @@ func state_process(_delta):
 	
 func state_input(event: InputEvent):
 	if (event.is_action_pressed("jump") && !has_double_jumped):
-		double_jump()
+		if get_parent().get_parent().get_parent().get_node("DoubleJumpDevil").accepted_deal == true:
+			double_jump()
 
 func on_exit():
 	if(next_state == landing_state):

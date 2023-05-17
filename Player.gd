@@ -34,7 +34,7 @@ func _process(_delta):
 	if hearts == 0:
 		game_over()
 	if won == true:
-		get_tree().change_scene_to_file("res://game_over_screen.tscn")
+		get_tree().change_scene_to_file("res://Credits.tscn")
 	
 func _physics_process(delta):
 	# Add the gravity.
