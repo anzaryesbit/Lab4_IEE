@@ -58,7 +58,8 @@ func _physics_process(delta):
 #		if velocity.x == 0:
 #			velocity.x = direction.x * SPEED
 #			direction.x = -1 * direction.x
-		move()
+		if timer.is_stopped():
+			move()
 		move_and_slide()
 #		update_dir()
 		update_animation()

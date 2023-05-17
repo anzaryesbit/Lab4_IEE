@@ -44,7 +44,8 @@ func _physics_process(delta):
 		update_damaged()
 #		print("velocity:", velocity)
 	else:
-		move()
+		if timer.is_stopped():
+			move()
 		move_and_slide()
 		update_animation()
 		update_damaged()
